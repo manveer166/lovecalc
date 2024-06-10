@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Score Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #ffcccc; /* light red */
+            color: #660000; /* dark red */
+        }
+        h1 {
+            color: #cc0000; /* red */
+        }
+        label {
+            color: #660000; /* dark red */
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 2px solid #cc0000; /* red */
+        }
+        input {
+            background-color: #ffeb99; /* light yellow */
+        }
+        button {
+            background-color: #cc0000; /* red */
+            color: #ffffff; /* white */
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff6600; /* orange */
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #cc0000; /* red */
+        }
+    </style>
+</head>
+<body>
+    <h1>Love Score Calculator</h1>
+    <form id="loveForm">
+        <label for="var1">Please put in first person's name:</label>
+        <input type="text" id="var1" name="var1" required><br><br>
+        <label for="var2">Please put in second person's name:</label>
+        <input type="text" id="var2" name="var2" required><br><br>
+        <button type="button" onclick="calculateLoveScore()">Calculate</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateLoveScore() {
+            var var1 = document.getElementById('var1').value;
+            var var2 = document.getElementById('var2').value;
+            var a = var1 + var2;
+            var b = (a.toLowerCase().split("t").length - 1) +
+                    (a.toLowerCase().split("r").length - 1) +
+                    (a.toLowerCase().split("u").length - 1) +
+                    (a.toLowerCase().split("e").length - 1) +
+                    (a.toLowerCase().split("l").length - 1) +
+                    (a.toLowerCase().split("o").length - 1) +
+                    (a.toLowerCase().split("v").length - 1) +
+                    (a.toLowerCase().split("e").length - 1);
+
+            var result;
+            if (b < 10 || b > 90) {
+                result = `Your score is ${b}, you go together like coke and mentos.`;
+            } else if (b < 50 && b > 40) {
+                result = `Your score is ${b}, you're alright together.`;
+            } else {
+                result = `Your score is ${b}.`;
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
